@@ -17,48 +17,52 @@ public class Movment : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         // Put the camera inside the capsule collider
-        movmentData.playerView.position = transform.position;
-        movmentData.playerView.position = new Vector3(transform.position.x, transform.position.y + movmentData.playerViewYOffset, transform.position.z);
+        movmentData.playerView = GetComponentInChildren<Camera>();
+        movmentData.playerView.transform.position = transform.position;
+        movmentData.playerView.transform.position = new Vector3(transform.position.x, transform.position.y + movmentData.playerViewYOffset, transform.position.z);
+        
     }
 
     private void Update()
     {
-        if (Cursor.lockState == CursorLockMode.Locked)
+        if (movmentData.canMove)
         {
-            movmentData.rotX += Input.GetAxis("Mouse Y") * movmentData.xMouseSensitivity * 0.02f;
-            movmentData.rotY += Input.GetAxis("Mouse X") * movmentData.yMouseSensitivity * 0.02f;
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                movmentData.rotX += Input.GetAxis("Mouse Y") * movmentData.xMouseSensitivity * 0.02f;
+                movmentData.rotY += Input.GetAxis("Mouse X") * movmentData.yMouseSensitivity * 0.02f;
+            }
+
+
+            // Clamp the X rotation
+            if (movmentData.rotX < -90) movmentData.rotX = -90f;
+            else if (movmentData.rotX > 90) movmentData.rotX = 90f;
+
+            // Rotates the collider
+            transform.rotation = Quaternion.Euler(0, movmentData.rotY, 0);
+            movmentData.playerView.transform.rotation = Quaternion.Euler(-movmentData.rotX, movmentData.rotY, 0);
+
+            QueueJump();
+            GroundMove();
+
+            // Move the controller
+            movmentData.characterController.Move(movmentData.playerVelocity * Time.deltaTime);
+
+            // Calculate top velocity 
+            Vector3 m_velocity = movmentData.playerVelocity;
+            m_velocity.y = 0.0f;
+
+            if (m_velocity.magnitude > movmentData.playerTopVelocity) movmentData.playerTopVelocity = m_velocity.magnitude;
+
+            //Need to move the camera after the player has been moved because otherwise the camera will clip the player if going fast enough and will always be 1 frame behind.
+            //Set the camera's position to the transform
+            movmentData.playerView.transform.position = new Vector3
+                (
+                transform.position.x,
+                transform.position.y + movmentData.playerViewYOffset,
+                transform.position.z
+                );
         }
-        
-
-        // Clamp the X rotation
-        if (movmentData.rotX < -90) movmentData.rotX = -90f;
-        else if (movmentData.rotX > 90) movmentData.rotX = 90f;
-
-        // Rotates the collider
-        transform.rotation = Quaternion.Euler(0, movmentData.rotY, 0);
-        movmentData.playerView.rotation = Quaternion.Euler(-movmentData.rotX, movmentData.rotY, 0);
-
-        QueueJump();
-        GroundMove();
-
-        // Move the controller
-        movmentData.characterController.Move(movmentData.playerVelocity * Time.deltaTime);
-
-        // Calculate top velocity 
-        Vector3 m_velocity = movmentData.playerVelocity;
-        m_velocity.y = 0.0f;
-
-        if (m_velocity.magnitude > movmentData.playerTopVelocity) movmentData.playerTopVelocity = m_velocity.magnitude;
-
-        //Need to move the camera after the player has been moved because otherwise the camera will clip the player if going fast enough and will always be 1 frame behind.
-        //Set the camera's position to the transform
-        movmentData.playerView.position = new Vector3
-            (
-            transform.position.x,
-            transform.position.y + movmentData.playerViewYOffset,
-            transform.position.z
-            );
-
     }
 
     void GroundMove()

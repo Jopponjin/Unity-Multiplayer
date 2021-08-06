@@ -17,8 +17,10 @@ public class MovmentData : MonoBehaviour
     [HideInInspector]
     public CharacterController characterController;
 
+    public bool canMove;
+
     // Player view stuff 
-    public Transform playerView;                   // Must be a camera
+    public Camera playerView;                   // Must be a camera
     public float playerViewYOffset = 0.6f;         // The height at which the camera is bound to
     public float xMouseSensitivity = 30.0f;
     public float yMouseSensitivity = 30.0f;
@@ -37,7 +39,7 @@ public class MovmentData : MonoBehaviour
     public float sideStrafeAcceleration = 50f;     // How fast acceleration occurs to get up to sideStrafeSpeed when side strafing.
     public float sideStrafeSpeed        = 1f;      // What the max speed to generate when side strafing.
     public float jumpSpeed = 8.0f;                 // The speed at which the character's up axis gains when hitting jump.
-
+    [Space]
     //Camera rotationals
     public float rotX = 0f;
     public float rotY = 0f;
@@ -57,11 +59,5 @@ public class MovmentData : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         whisCmd = new WhisCmd();
-
-        if (playerView == null)
-        {
-            playerView = Camera.main.transform;
-
-        }
     }
 }

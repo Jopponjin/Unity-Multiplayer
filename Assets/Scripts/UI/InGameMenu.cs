@@ -6,14 +6,14 @@ using MLAPI;
 
 public class InGameMenu : MonoBehaviour
 {
+    [SerializeField] UiCoreData uiData;
+
     public GameObject ServerDebug;
     [Space]
     public GameEventSys hostGameEvent;
     public GameEventSys connectGameEvent;
     public GameEventSys disconnectGameEvent;
     [Space]
-    public Button hostButton;
-    public Button connectButton;
     public Button disconnectButton;
 
     // Start is called before the first frame update
@@ -24,18 +24,11 @@ public class InGameMenu : MonoBehaviour
 
     private void Update()
     {
-        if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
+        if (uiData.currentUiState == UiCoreData.UiState.InGame)
         {
-            hostButton.enabled = true;
-            connectButton.enabled = true;
-            disconnectButton.enabled = false;
+            
         }
-        else
-        {
-            hostButton.enabled = false;
-            connectButton.enabled = false;
-            disconnectButton.enabled = true;
-        }
+        
     }
 
     public void ConnectToServer()
