@@ -14,11 +14,13 @@ public class PlayerNetworkSetup : NetworkBehaviour
         {
             gameObject.GetComponentInChildren<Camera>().gameObject.SetActive(false);
             gameObject.GetComponent<MovmentData>().canMove = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
         else
         {
             gameObject.GetComponentInChildren<Camera>().gameObject.SetActive(true);
             gameObject.GetComponent<MovmentData>().canMove = true;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 }
