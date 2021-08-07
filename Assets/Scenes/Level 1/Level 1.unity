@@ -209,14 +209,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 965730778, guid: 97e01be5c86f1114aaf562f0d57aa667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1573238215}
     - target: {fileID: 874859089493600823, guid: 97e01be5c86f1114aaf562f0d57aa667, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1715806831}
-    - target: {fileID: 5749741856878395264, guid: 97e01be5c86f1114aaf562f0d57aa667, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1573238215}
     - target: {fileID: 7736621384158225652, guid: 97e01be5c86f1114aaf562f0d57aa667, type: 3}
       propertyPath: m_Name
       value: '[UI] In Game Menu'

@@ -16,8 +16,7 @@ public class UiCore : MonoBehaviour
     [SerializeField] InputField hostUIInputfieldObj;
     [SerializeField] Toggle hostUiToggleObj;
     [Space]
-    [SerializeField] GameObject mainMenuObject;
-    [SerializeField] GameObject hostMenuObject;
+
     [SerializeField] GameObject inGameMenuObject;
 
     void Awake()
@@ -39,10 +38,9 @@ public class UiCore : MonoBehaviour
         uiData.hostPasswordField = hostUIInputfieldObj;
         uiData.hostPasswordToggle = hostUiToggleObj;
 
-        uiData.mainMenuRef = mainMenuObject;
-        uiData.hostMenuRef = hostMenuObject;
         uiData.inGameMenuRef = inGameMenuObject;
-        
+
+        uiData.joinPasswordField = connectionPasswordField;
     }
 
     public void SetPasswordProtected()

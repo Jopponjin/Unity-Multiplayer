@@ -17,19 +17,6 @@ public class GameStateCore : MonoBehaviour
         coreData.currentGameScene = SceneManager.GetActiveScene();
 
         SetGameState();
-
-        if (netCoreData.currentNetState == NetCoreData.NetClientState.Client)
-        {
-            //coreData.cameraObjects = GameObject.FindGameObjectsWithTag("Player");
-
-            //for (int i = 0; i < coreData.cameraObjects.Length; i++)
-            //{
-            //    if (coreData.cameraObjects[i].GetComponentInChildren<Camera>())
-            //    {
-            //        coreData.cameraObjects[i].GetComponentInChildren<Camera>().gameObject.SetActive(false);
-            //    }
-            //}
-        }
     }
 
     void SetGameState()
@@ -74,23 +61,5 @@ public class GameStateCore : MonoBehaviour
         Debug.Log("[ CORE ]: 'QuitGame()' called.");
 
         Application.Quit();
-
-        //if (coreData.currentGameState == CoreData.InGameState.InGame)
-        //{
-        //    SceneManager.LoadScene("Menu");
-        //    coreData.currentGameState = CoreData.InGameState.Menu;
-
-        //    for (int i = 0; i < coreData.gameScenes.Count; i++)
-        //    {
-        //        if (coreData.gameScenes[i].name == "Menu")
-        //        {
-        //            coreData.currentGameScene = coreData.gameScenes[i];
-        //        }
-        //    }
-        //}    
-        //else if (coreData.currentGameState == CoreData.InGameState.Menu)
-        //{
-        //    Application.Quit();
-        //}
     }
 }
