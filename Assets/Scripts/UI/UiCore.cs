@@ -18,6 +18,7 @@ public class UiCore : MonoBehaviour
     [Space]
 
     [SerializeField] GameObject inGameMenuObject;
+    [SerializeField] GameObject clientJoinMenuObject;
 
     void Awake()
     {
@@ -39,7 +40,7 @@ public class UiCore : MonoBehaviour
         uiData.hostPasswordToggle = hostUiToggleObj;
 
         uiData.inGameMenuRef = inGameMenuObject;
-
+        uiData.clientJoinMenuRef = clientJoinMenuObject;
         uiData.joinPasswordField = connectionPasswordField;
     }
 

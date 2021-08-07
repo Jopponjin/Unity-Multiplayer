@@ -17,6 +17,7 @@ public class UiCoreData : ScriptableObject
     public GameObject mainMenuRef { get; set; }
     public GameObject hostMenuRef { get; set; }
     public GameObject inGameMenuRef { get; set; }
+    public GameObject clientJoinMenuRef { get; set; }
 
     public  InputField joinPasswordField { get; set; }
     public  InputField hostPasswordField { get; set; }

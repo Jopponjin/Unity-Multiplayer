@@ -12,13 +12,6 @@ public class NetworkingCore : NetworkBehaviour
     [SerializeField] CoreData coreData;
     [SerializeField] NetCoreData netCoreData;
 
-    Ping ping;
-
-    private void Start()
-    {
-        
-    }
-
     void ApplyIngameDataValues()
     {
         netCoreData.currentNetState = NetCoreData.NetClientState.Client;
@@ -70,7 +63,16 @@ public class NetworkingCore : NetworkBehaviour
 
         //NetworkManager.Singleton.NetworkConfig.
 
-        NetworkManager.Singleton.StartClient();
+        
+        if (NetworkManager.Singleton.StartClient().Success)
+        {
+            uiData.clientJoinMenuRef.SetActive(false);
+            uiData.inGameMenuRef.SetActive(false);
+        }
+        else
+        {
+            uiData.clientJoinMenuRef.SetActive(false);
+        }
     }
 
     public void LeaveEvent()
