@@ -1927,6 +1927,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8271701802025256759, guid: 9797349dc639bc9478919aec3b6f0963, type: 3}
+      propertyPath: ConnectPort
+      value: 8888
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271701802025256759, guid: 9797349dc639bc9478919aec3b6f0963, type: 3}
+      propertyPath: ConnectAddress
+      value: 127.0.0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271701802025256759, guid: 9797349dc639bc9478919aec3b6f0963, type: 3}
+      propertyPath: ServerListenPort
+      value: 8888
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271701802025256759, guid: 9797349dc639bc9478919aec3b6f0963, type: 3}
+      propertyPath: ServerWebsocketListenPort
+      value: 8888
+      objectReference: {fileID: 0}
     - target: {fileID: 8271701802338480349, guid: 9797349dc639bc9478919aec3b6f0963, type: 3}
       propertyPath: m_RootOrder
       value: 4
