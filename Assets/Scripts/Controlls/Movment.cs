@@ -20,7 +20,9 @@ public class Movment : MonoBehaviour
         movmentData.playerView = GetComponentInChildren<Camera>();
         movmentData.playerView.transform.position = transform.position;
         movmentData.playerView.transform.position = new Vector3(transform.position.x, transform.position.y + movmentData.playerViewYOffset, transform.position.z);
-        
+
+        movmentData.canMove = true;
+
     }
 
     private void Update()

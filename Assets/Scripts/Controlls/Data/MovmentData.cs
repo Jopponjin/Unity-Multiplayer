@@ -17,7 +17,7 @@ public class MovmentData : MonoBehaviour
     [HideInInspector]
     public CharacterController characterController;
 
-    public bool canMove;
+    public bool canMove = true;
 
     // Player view stuff 
     public Camera playerView;                   // Must be a camera
