@@ -1,2 +1,2 @@
 # Unity Multiplayer
- Simple FPS prototype useing MLAPI.
+ Simple FPS prototype using MLAPI.
